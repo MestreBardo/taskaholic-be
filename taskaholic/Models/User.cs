@@ -12,10 +12,15 @@ namespace taskaholic.Models
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        [Required(ErrorMessage = "O Nome é necessário para o cadastro")]
+        [StringLength(100,MinimumLength = 3, ErrorMessage = "O nome precisa ter mais de três letras")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "O Email é necessário para o cadastro")]
+        [EmailAddress(ErrorMessage = "Por favor inserir um email valido.")]
         public string Email { get; set; }
-        public string Password { get; set; }
-        public bool IsAdmin { get; set; }
+        public byte[] Password { get; set; }
+        public byte[] PasswordSalt { get; set; }
+        public string Role { get; set; }
         public List<Assignment> Assignments{ get; set;}
     }
 }
