@@ -10,6 +10,15 @@ namespace taskaholic.Models
 {
     public class User
     {
+        public User(string name, string email, string role, List<Tarefa> assignments, bool isActive)
+        {
+            Name = name;
+            Email = email;
+            Role = role;
+            Assignments = assignments;
+            IsActive = isActive;
+        }
+
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         [Required(ErrorMessage = "O Nome é necessário para o cadastro")]
@@ -21,6 +30,7 @@ namespace taskaholic.Models
         public byte[] Password { get; set; }
         public byte[] PasswordSalt { get; set; }
         public string Role { get; set; }
-        public List<Assignment> Assignments{ get; set;}
+        public List<Tarefa> Assignments{ get; set;}
+        public bool IsActive { get; set; }
     }
 }
